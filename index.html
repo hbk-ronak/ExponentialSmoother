@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to ExponentialSmoother’s documentation! &#8212; ExponentialSmoother 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-exponentialsmoother-s-documentation">
+<h1>Welcome to ExponentialSmoother’s documentation!<a class="headerlink" href="#welcome-to-exponentialsmoother-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="module-ExponentialSmoother">
+<span id="exponential-smoother"></span><h1>Exponential Smoother<a class="headerlink" href="#module-ExponentialSmoother" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="ExponentialSmoother.clean_data">
+<code class="sig-prename descclassname">ExponentialSmoother.</code><code class="sig-name descname">clean_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datat</span></em>, <em class="sig-param"><span class="n">tradeType</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timePeriod</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExponentialSmoother.clean_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a dataFrame Filter out data based on
+time period, trade type or both.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">pandas.core.frame.DataFrame</span></dt><dd><p>DataFrame that needs to be cleaned.</p>
+</dd>
+<dt><strong>tradeType</strong><span class="classifier">None or list of strings</span></dt><dd><p>list of trade types to be removed
+defaults to None doesn’t remove any trade types</p>
+</dd>
+<dt><strong>volume</strong><span class="classifier">bool</span></dt><dd><p>If true Outputs the cumulative Vol along with OHLV.</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>pandas.core.frame.DataFrame</strong></dt><dd><p>cleaned data frame.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ExponentialSmoother.create_db">
+<code class="sig-prename descclassname">ExponentialSmoother.</code><code class="sig-name descname">create_db</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">listdb</span></em>, <em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="n">Metric</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExponentialSmoother.create_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a data structure that is fast and easy to manipulate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>listdb</strong><span class="classifier">list</span></dt><dd><p>list of data frames that needs to be combined.</p>
+</dd>
+<dt><strong>symbol</strong><span class="classifier">list</span></dt><dd><p>list of tickers</p>
+</dd>
+<dt><strong>Metric</strong><span class="classifier">str</span></dt><dd><p>Metric that needs to be extracted from the data frame</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>list</strong></dt><dd><p>[calendar, [tickers], np.array].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ExponentialSmoother.exponential_smoothing">
+<code class="sig-prename descclassname">ExponentialSmoother.</code><code class="sig-name descname">exponential_smoothing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">lambda_</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">initialValue</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExponentialSmoother.exponential_smoothing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a data structure that is fast and easy to manipulate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">Array like object</span></dt><dd><p>Time Series on which we want to apply exponential smoothing.</p>
+</dd>
+<dt><strong>lambda_</strong><span class="classifier">float</span></dt><dd><p>parameter for exponential smoothing</p>
+</dd>
+<dt><strong>initalValue :</strong></dt><dd><p>s0 the starting point for exponential smoothing
+if None: s0 = data[0]</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>list</strong></dt><dd><p>smoothed Time Series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ExponentialSmoother.format_time">
+<code class="sig-prename descclassname">ExponentialSmoother.</code><code class="sig-name descname">format_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExponentialSmoother.format_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a dataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">pandas.core.frame.DataFrame</span></dt><dd><p>DataFrame of the input trade data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pandas.core.frame.DataFrame</dt><dd><p>Dataframe with formatted timestamps.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ExponentialSmoother.tick_resampler_aligned">
+<code class="sig-prename descclassname">ExponentialSmoother.</code><code class="sig-name descname">tick_resampler_aligned</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">dataPoints</span></em>, <em class="sig-param"><span class="n">volume</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ExponentialSmoother.tick_resampler_aligned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a dataFrame, and tick size, resample into tick bars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">str</span></dt><dd><p>DataFrame of the input trade data.</p>
+</dd>
+<dt><strong>dataPoints</strong><span class="classifier">int</span></dt><dd><p>Size of the output after resampling i.e combine (data.shape[0]/dataPoints) ticks 
+together.</p>
+</dd>
+<dt><strong>volume</strong><span class="classifier">bool</span></dt><dd><p>If true Outputs the cumulative Vol along with OHLV.</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>pandas.core.frame.DataFrame</strong></dt><dd><p>OHLCV data for given tick bar size.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">ExponentialSmoother</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Ronak Dilip Shah.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
